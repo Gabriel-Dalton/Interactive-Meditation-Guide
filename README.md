@@ -4,6 +4,8 @@
 
 The Interactive Meditation Guide is a web-based platform designed to offer guided meditations paired with interactive, calming animations. This platform allows users to select meditation themes based on their needs—whether it's stress relief, focus, or relaxation. As users follow the guided audio, the screen displays animations that synchronize with the meditation progress, creating an immersive experience that enhances mindfulness.
 
+![image](https://github.com/user-attachments/assets/a9bb1619-ea26-43b4-89ef-180e3caae128)
+
 ## Features
 
 - **Interactive Animations**: The platform features animations that sync with the meditation guide, providing a visual accompaniment that enhances the meditation experience.
@@ -13,6 +15,10 @@ The Interactive Meditation Guide is a web-based platform designed to offer guide
 - **Progress Tracking**: The platform includes a progress tracking feature to help users maintain consistency in their meditation practice, encouraging regular mindfulness.
 
 - **Mindfulness Tips & Tutorials**: The platform offers tips and tutorials on mindfulness practices, helping users deepen their understanding and improve their meditation skills.
+
+- **Sound Playback Notification**: Users are notified when the sound starts playing, ensuring that their session begins smoothly.
+
+- **Sound Issue Detection**: The platform checks if the background sound is playing. If it's not (due to volume issues or muting), users are alerted to check their sound settings.
 
 ## Getting Started
 
@@ -45,10 +51,18 @@ To run this project locally, you'll need:
 
 ### Usage
 
-- Choose a meditation theme from the main menu.
-- Customize your session by selecting the desired length and background sound.
-- Follow the guided meditation while enjoying the interactive animations that accompany your session.
-- Track your progress and explore mindfulness tips to enhance your practice.
+1. **Select Your Meditation**: Choose a meditation theme (e.g., Stress Relief, Focus, Relaxation) from the main menu.
+2. **Customize Your Session**: Adjust the session length and select a background sound (e.g., Forest, Ocean, Rain).
+3. **Start Meditation**: Begin your guided meditation session and enjoy the interactive animations synchronized with your progress.
+4. **Check Sound Notifications**: Receive a notification if the background sound is not playing correctly, and get assistance in resolving any issues.
+5. **Track Your Progress**: Watch the progress bar as it fills, guiding you through each meditation step.
+6. **Explore Mindfulness Tips**: After the session, explore tips and tutorials to further enhance your mindfulness practice.
+
+### File Structure
+
+- `index.html`: The main structure of the platform.
+- `styles.css`: The styling and layout of the platform.
+- `script.js`: The interactive functionality, including sound playback, progress tracking, and step transitions.
 
 ## Contributing
 
