@@ -28,7 +28,7 @@ To run this project locally, you'll need:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/interactive-meditation-guide.git
+   git clone https://github.com/gabriel-dalton/interactive-meditation-guide.git
    ```
 
 2. Navigate to the project directory:
