@@ -1,42 +1,85 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let progressBar = document.getElementById("progress");
-    let progressText = document.getElementById("progressText");
-    let footerText = document.getElementById("footerText");
-    let meditationScript = document.getElementById("meditationScript");
+// Display the first step and hide the others
+function goToStep(stepNumber) {
+    const steps = document.querySelectorAll('.step');
+    steps.forEach(step => step.classList.add('hidden'));
+    document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+}
 
+document.addEventListener('DOMContentLoaded', function() {
+    goToStep(1); // Start with the first step visible
+});
+
+document.getElementById('start-meditation').addEventListener('click', function () {
+    const sessionLength = parseInt(document.getElementById('session-length').value, 10);
+    const meditationType = document.getElementById('meditation-type').value;
+    const backgroundSound = document.getElementById('background-sound').value;
+
+    startMeditation(sessionLength, meditationType, backgroundSound);
+});
+
+const meditationSteps = [
+    "Close your eyes and take a deep breath.",
+    "Focus on the sound around you.",
+    "Let go of any tension in your body.",
+    "Visualize a calm, peaceful place.",
+    "Stay present in this moment.",
+    "When you're ready, slowly open your eyes."
+];
+
+function startMeditation(duration, type, sound) {
+    const progressBar = document.getElementById('progress');
+    const stepsContainer = document.getElementById('meditation-steps');
     let progress = 0;
-    let meditationDuration = 300000; // 5 minutes
-    let scriptMessages = [
-        "Close your eyes and take a deep breath...",
-        "Feel the tension in your body slowly release...",
-        "Inhale deeply... and exhale slowly...",
-        "Let go of any worries or stress...",
-        "Feel your body becoming lighter...",
-        "Inhale peace... exhale relaxation...",
-        "You are calm, you are at peace...",
-        "Slowly open your eyes whenever you're ready..."
-    ];
+    let stepIndex = 0;
+    const interval = (duration * 60000) / meditationSteps.length; // Convert minutes to milliseconds divided by steps
 
-    let scriptIndex = 0;
-    let messageInterval = meditationDuration / scriptMessages.length;
+    // Start the background sound and check if it's playing
+    const audio = playBackgroundSound(sound);
 
-    let meditationInterval = setInterval(() => {
-        if (progress < 100) {
-            progress += 100 / scriptMessages.length;
-            progressBar.style.width = progress + "%";
-            progressText.textContent = Math.floor(progress) + "%";
+    // If sound is not playing (muted or volume too low)
+    setTimeout(() => {
+        if (audio.paused || audio.muted || audio.volume === 0) {
+            alert("It seems like the sound is not playing. Please check your volume or sound settings.");
+        } else {
+            alert("Sound is playing.");
+        }
+    }, 1000); // Check after 1 second
 
-            if (scriptIndex < scriptMessages.length) {
-                meditationScript.textContent = scriptMessages[scriptIndex];
-                scriptIndex++;
-            }
-
-            if (progress === 50) {
-                footerText.textContent = "You're halfway there!";
-            }
+    // Start the meditation session
+    const meditationInterval = setInterval(function() {
+        if (stepIndex < meditationSteps.length) {
+            stepsContainer.innerText = meditationSteps[stepIndex];
+            progress += 100 / meditationSteps.length;
+            progressBar.style.width = progress + '%';
+            stepIndex++;
         } else {
             clearInterval(meditationInterval);
-            meditationScript.innerHTML = `<strong>Meditation Complete</strong><br>Thank you for meditating with us.`;
+            stepsContainer.innerText = "Meditation Complete! Take your time to open your eyes.";
+            progressBar.style.width = '100%';
         }
-    }, messageInterval);
-});
+    }, interval);
+}
+
+function playBackgroundSound(sound) {
+    let audioSrc;
+    switch (sound) {
+        case 'forest':
+            audioSrc = 'https://github.com/Gabriel-Dalton/Interactive-Meditation-Guide/raw/main/forest.mp3';
+            break;
+        case 'ocean':
+            audioSrc = 'https://github.com/Gabriel-Dalton/Interactive-Meditation-Guide/raw/main/ocean.mp3';
+            break;
+        case 'rain':
+            audioSrc = 'https://github.com/Gabriel-Dalton/Interactive-Meditation-Guide/raw/main/rain.mp3';
+            break;
+        default:
+            audioSrc = '';
+    }
+
+    if (audioSrc) {
+        const audio = new Audio(audioSrc);
+        audio.loop = true;
+        audio.play();
+        return audio;
+    }
+}
