@@ -1,28 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Meditation Guide 🌿</title>
+    <title>Interactive Meditation Guide</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header class="header">
+    <header>
         <h1>Interactive Meditation Guide 🌿</h1>
     </header>
-    <div class="container">
-        <div class="meditation-card">
-            <h2 id="meditationTitle">Meditation: Stress Relief</h2>
-            <div class="progress-bar" id="progressBar">
-                <div class="progress" id="progress"></div>
+
+    <main id="content">
+        <!-- Step 1: Meditation Selection -->
+        <section id="step-1" class="step">
+            <h2>Step 1: Select Your Meditation</h2>
+            <select id="meditation-type" class="select-box">
+                <option value="stress-relief">Stress Relief</option>
+                <option value="focus">Focus</option>
+                <option value="relaxation">Relaxation</option>
+            </select>
+            <button class="next-btn" onclick="goToStep(2)">Next</button>
+        </section>
+
+        <!-- Step 2: Customize Session -->
+        <section id="step-2" class="step hidden">
+            <h2>Step 2: Customize Your Session</h2>
+            <label for="session-length">Session Length (minutes):</label>
+            <input type="number" id="session-length" min="1" max="60" value="10" class="input-box">
+
+            <label for="background-sound">Background Sound:</label>
+            <select id="background-sound" class="select-box">
+                <option value="forest">Forest</option>
+                <option value="ocean">Ocean</option>
+                <option value="rain">Rain</option>
+            </select>
+            <button class="next-btn" onclick="goToStep(3)">Next</button>
+            <button class="prev-btn" onclick="goToStep(1)">Back</button>
+        </section>
+
+        <!-- Step 3: Meditation Session -->
+        <section id="step-3" class="step hidden">
+            <h2>Step 3: Meditation Session</h2>
+            <div id="animation-container">
             </div>
-            <p id="progressText">0%</p>
-            <p id="meditationScript"></p>
-        </div>
-    </div>
-    <footer class="footer">
-        <p id="footerText">Take a deep breath and relax.</p>
+            <button id="start-meditation" class="start-btn">Start Meditation</button>
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+            <div id="meditation-steps">
+                <!-- Step instructions will appear here -->
+            </div>
+            <button class="prev-btn" onclick="goToStep(2)">Back</button>
+        </section>
+
+        <!-- Step 4: Mindfulness Tips -->
+        <section id="step-4" class="step hidden">
+            <h2>Mindfulness Tips & Tutorials</h2>
+            <ul>
+                <li>Tip 1: Focus on your breath.</li>
+                <li>Tip 2: Let go of distractions.</li>
+                <li>Tip 3: Practice regularly.</li>
+            </ul>
+            <button class="prev-btn" onclick="goToStep(3)">Back</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Interactive Meditation Guide</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
+
 </html>
