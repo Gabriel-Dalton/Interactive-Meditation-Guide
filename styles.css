@@ -1,0 +1,69 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #004d40;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    background: #4caf50;
+    padding: 20px 0;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+.meditation-card {
+    margin-top: 20px;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress {
+    background-color: #f44336;
+    height: 20px;
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+#progressText {
+    font-size: 1.2em;
+}
+
+#meditationScript {
+    font-size: 1em;
+    color: #004d40;
+    margin-top: 20px;
+}
+
+.footer {
+    margin-bottom: 20px;
+    font-size: 1em;
+    color: #004d40;
+}
